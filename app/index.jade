@@ -2,19 +2,19 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    title Shell Game
+    title Memory
     link(rel='stylesheet', href='/css/normalize.css')
     link(rel='stylesheet', href='/css/style.css')
     script(src='/js/vendor/jquery.js')
     script(src='/js/source/main.js')
   body
-    h1 Shell Game!
-    #counter
-      #countHolder
-        #won
-        #slash
-        #played
-    #percent
-    #playground
-      button#play Play!
-      #shellHolder
+    h1 Memory!
+      button#newGame New Game
+    table#gameBoard
+      - for(var i = 0; i<4; i++)
+        tr
+          - for(var j = 0; j<5; j++)
+            td
+              .cardFront
+              .cardBack
+
