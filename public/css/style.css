@@ -1,6 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Aladin);
 h1 {
   text-align: center;
+  font-family: 'Aladin', cursive;
+  color: #BF2424;
+}
+button {
+  margin-left: 10px;
+  background-color: #A8BFBB;
+  color: #BF2424;
 }
 #gameBoard {
   height: 616px;
@@ -11,7 +18,7 @@ h1 {
 td {
   height: 150px;
   width: 150px;
-  background-color: #8B1F33;
+  background-color: #02734A;
   position: relative;
 }
 .cardBack {
@@ -21,8 +28,8 @@ td {
   height: 120px;
   width: 120px;
   border-radius: 10px;
-  background-color: #FFBA83;
-  border: 3px solid #250E18;
+  background-color: #A8BFBB;
+  border: 3px solid #730303;
   transition: opacity 1s;
   -webkit-transition: opacity 1s;
 }
@@ -33,13 +40,13 @@ td {
   height: 120px;
   width: 120px;
   border-radius: 10px;
-  background-color: #FFBA83;
-  border: 3px solid #250E18;
+  background-color: #A8BFBB;
+  border: 3px solid #730303;
   text-align: center;
   line-height: 120px;
   font-size: 60px;
   font-family: 'Aladin', cursive;
-  color: #250E18;
+  color: #730303;
   opacity: 0;
   transition: opacity 1s;
   -webkit-transition: opacity 1s;

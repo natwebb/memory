@@ -3,11 +3,11 @@
   'use strict';
 
   var board = [[],[],[],[]];
-  var turn = 0;
+  var turn;
   var pickA;
   var pickB;
-  var positionA = [];
-  var positionB = [];
+  var positionA;
+  var positionB;
 
   $(document).ready(initialize);
 
@@ -19,7 +19,14 @@
   function clickPlay(){
     $('.cardFront').each(function(){
       $(this).text('');
+      $(this).css('opacity','0');
     });
+    $('.cardBack').each(function(){
+      $(this).css('opacity','1');
+    });
+    turn = 0;
+    positionA = [];
+    positionB = [];
     var startingLetters = generateStartingLetters();
     assignLettersToBoard(startingLetters);
     $('#gameBoard').show();
@@ -53,23 +60,25 @@
   }
 
   function showCard(){
-    if(positionA[0]===$(this).parent().index()&&positionA[1]===$(this).index()){
-      return;
-    }
+    var thisRow = $(this).parent().index();
+    var thisCol = $(this).index();
 
     if(turn===0){
-      positionA[0] = $(this).parent().index();
-      positionA[1] = $(this).index();
-      pickA = board[positionA[0]][positionA[1]];
+      positionA[0] = thisRow;
+      positionA[1] = thisCol;
+      pickA = board[thisRow][thisCol];
       $(this).children('.cardFront').text(pickA.toUpperCase());
       $(this).children('.cardFront').css('opacity', '1');
       $(this).children('.cardBack').css('opacity', '0');
       turn = 1;
     }
     else if(turn===1){
-      positionB[0] = $(this).parent().index();
-      positionB[1] = $(this).index();
-      pickB = board[positionB[0]][positionB[1]];
+      if(positionA[0]===thisRow&&positionA[1]===thisCol){
+        return;
+      }
+      positionB[0] = thisRow;
+      positionB[1] = thisCol;
+      pickB = board[thisRow][thisCol];
       $(this).children('.cardFront').text(pickB.toUpperCase());
       $(this).children('.cardFront').css('opacity', '1');
       $(this).children('.cardBack').css('opacity', '0');
@@ -81,11 +90,10 @@
   }
 
   function checkCards(){
-    positionA = [];
-    positionB = [];
-
     if(pickA===pickB){
       turn = 0;
+      positionA = [];
+      positionB = [];
       if($('.cardFront[style="opacity: 1;"').size()===20){
         alert('You win!');
       }
